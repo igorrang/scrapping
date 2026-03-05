@@ -8,6 +8,7 @@ import json
 import re
 from apify import Actor
 from crawlee.crawlers import PlaywrightCrawler, PlaywrightCrawlingContext
+from crawlee import Request
 
 # ─── Queries por setor e cidade ───────────────────────────────────────────────
 SEARCH_QUERIES = [
@@ -222,10 +223,10 @@ async def main():
 
         # Cria uma request por query
         requests = [
-            {
-                "url": f"https://www.google.com/maps/search/{q.replace(' ', '+')}",
-                "userData": {"query": q}
-            }
+            Request.from_url(
+                f"https://www.google.com/maps/search/{q.replace(' ', '+')}",
+                user_data={"query": q}
+            )
             for q in queries
         ]
 
