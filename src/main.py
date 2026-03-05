@@ -7,7 +7,7 @@ import asyncio
 import json
 import re
 from apify import Actor
-from crawlee.playwright_crawler import PlaywrightCrawler, PlaywrightCrawlingContext
+from crawlee.crawlers import PlaywrightCrawler, PlaywrightCrawlingContext
 
 # ─── Queries por setor e cidade ───────────────────────────────────────────────
 SEARCH_QUERIES = [
